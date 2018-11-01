@@ -1,0 +1,50 @@
+/**
+ * Comment
+ */
+
+@media screen and (min-width: 480px) {
+	body {
+		background-color: lightgreen;
+	}
+	#main {
+		border: 55px solid magenta;
+	}
+	ul li {
+		background: #f00;
+		padding: 42.9em;
+	}
+	li-li {
+		background: red;
+		padding: 42px;
+	}
+	li-ul {
+		background: green;
+		border-width: 6px;
+	}
+	html {
+		outline-color: red;
+	}
+	div {
+		border-color: hotpink;
+	}
+	span {
+		background: url(goldenrod.jpg) no-repeat;
+	}
+	@media screen and (max-width: 690px) {
+		b {
+			font-weight:bold;
+		}
+	}
+}
+
+#main {
+	border: 1px dotted black;
+}
+
+aside {
+
+}
+
+ul > li {
+	margin: 5px;
+}
