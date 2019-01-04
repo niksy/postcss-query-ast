@@ -31,20 +31,42 @@ npm install postcss-query-ast --save
 
 ## Usage
 
+Querying AST from following CSS will give us only `body` rule with `jackie` ID attribute.
+
+```css
+body {
+	background: red;
+}
+
+body#jackie {
+	background: hotpink;
+}
+
+a {
+	background: green;
+}
+```
+
 ```js
 import queryAst from 'postcss-query-ast';
 
-queryAst('rule[selector="body"]').then(( ast ) => {
+queryAst('rule[selector="body#jackie"]').then(( ast ) => {
 	/* [ Rule {
-	    raws: { before: '\n\t', between: ' ', semicolon: true, after: '\n\t' },
-	    type: 'rule',
-	    nodes: [ [Object] ],
-	    parent: 
-	     AtRule { ... },
-	    source: { start: [Object], input: [Object], end: [Object] },
-	    selector: 'body',
-	    lastEach: 11,
-	    indexes: {} } ] */
+    raws: { before: '\n\n', between: ' ', semicolon: true, after: '\n' },
+    type: 'rule',
+    nodes: [ [Declaration] ],
+    parent: 
+     Root {
+       raws: [Object],
+       type: 'root',
+       nodes: [Array],
+       source: [Object],
+       lastEach: 1,
+       indexes: {} },
+    source: { start: [Object], input: [Input], end: [Object] },
+    selector: 'body#jackie',
+    lastEach: 1,
+    indexes: {} } ] */
 });
 ```
 
