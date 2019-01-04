@@ -1,6 +1,6 @@
 {
   "name": "postcss-query-ast",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Query PostCSS AST with CSS selectors.",
   "main": "index.cjs.js",
   "module": "index.esm.js",
