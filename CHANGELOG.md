@@ -2,6 +2,9 @@
 
 ## [Unreleased][]
 
+- Update postcss-selector-parser to latest stable version
+- Improve documentation on usage
+
 ## [1.0.0][] - 2019-01-03
 
 ### Added
