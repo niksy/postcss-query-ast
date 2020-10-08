@@ -60,24 +60,26 @@ a {
 ```js
 import queryAst from 'postcss-query-ast';
 
-queryAst('rule[selector="body#jackie"]').then((ast) => {
+(async () => {
+	const ast = await queryAst('rule[selector="body#jackie"]');
+
 	/* [ Rule {
-    raws: { before: '\n\n', between: ' ', semicolon: true, after: '\n' },
-    type: 'rule',
-    nodes: [ [Declaration] ],
-    parent: 
-     Root {
-       raws: [Object],
-       type: 'root',
-       nodes: [Array],
-       source: [Object],
-       lastEach: 1,
-       indexes: {} },
-    source: { start: [Object], input: [Input], end: [Object] },
-    selector: 'body#jackie',
-    lastEach: 1,
-    indexes: {} } ] */
-});
+	    raws: { before: '\n\n', between: ' ', semicolon: true, after: '\n' },
+	    type: 'rule',
+	    nodes: [ [Declaration] ],
+	    parent: 
+	     Root {
+	       raws: [Object],
+	       type: 'root',
+	       nodes: [Array],
+	       source: [Object],
+	       lastEach: 1,
+	       indexes: {} },
+	    source: { start: [Object], input: [Input], end: [Object] },
+	    selector: 'body#jackie',
+	    lastEach: 1,
+	    indexes: {} } ] */
+})();
 ```
 
 ## API
