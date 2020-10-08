@@ -28,8 +28,8 @@
     "version": "version-changelog CHANGELOG.md && changelog-verify CHANGELOG.md && git add CHANGELOG.md"
   },
   "dependencies": {
-    "postcss": "^7.0.5",
-    "postcss-selector-parser": "^5.0.0"
+    "postcss": "^8.1.1",
+    "postcss-selector-parser": "^6.0.4"
   },
   "devDependencies": {
     "changelog-verify": "^1.1.2",

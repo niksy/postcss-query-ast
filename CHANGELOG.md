@@ -2,18 +2,23 @@
 
 ## [Unreleased][]
 
+### Added
+
+-   Support for PostCSS 8
+
 ## [1.0.1][] - 2019-01-04
 
-- Update postcss-selector-parser to latest stable version
-- Improve documentation on usage
+### Changed
+
+-   Update postcss-selector-parser to latest stable version
+-   Improve documentation on usage
 
 ## [1.0.0][] - 2019-01-03
 
 ### Added
 
-- Initial implementation
+-   Initial implementation
 
-
-[Unreleased]: https://github.com/niksy/postcss-query-ast/compare/v1.0.1...HEAD
+[unreleased]: https://github.com/niksy/postcss-query-ast/compare/v1.0.1...HEAD
 [1.0.1]: https://github.com/niksy/postcss-query-ast/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/niksy/postcss-query-ast/tree/v1.0.0
