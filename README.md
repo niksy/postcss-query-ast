@@ -60,8 +60,11 @@ a {
 ```js
 import queryAst from 'postcss-query-ast';
 
+// Assume we have AST
+const postcssAst = [];
+
 (async () => {
-	const ast = await queryAst('rule[selector="body#jackie"]');
+	const ast = await queryAst('rule[selector="body#jackie"]', postcssAst);
 
 	/* [ Rule {
 	    raws: { before: '\n\n', between: ' ', semicolon: true, after: '\n' },
