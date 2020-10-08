@@ -1,7 +1,8 @@
 {
 	"root": true,
-	"extends": [
-		"niksy",
-		"niksy/next"
-	]
+	"extends": ["niksy", "niksy/next", "prettier"],
+	"plugins": ["prettier"],
+	"rules": {
+		"prettier/prettier": 1
+	}
 }

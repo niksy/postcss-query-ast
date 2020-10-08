@@ -4,15 +4,13 @@ import beforeHook from './util/before-hook';
 
 let ast;
 
-before(async function () {
+before(async function() {
 	ast = await beforeHook();
 	return ast;
 });
 
-describe('Combinators', function () {
-
-	it('should process descendant combinator (` `)', async function () {
-
+describe('Combinators', function() {
+	it('should process descendant combinator (` `)', async function() {
 		const [
 			nodesTagTag,
 			nodesTagAttribute,
@@ -45,14 +43,26 @@ describe('Combinators', function () {
 
 		assert.equal(nodesTagAttribute.length, 4);
 		assert.equal(nodesTagAttribute[0].value, '#f00');
-		assert.equal(nodesTagAttribute[nodesTagAttribute.length - 1].value, 'url(goldenrod.jpg) no-repeat');
+		assert.equal(
+			nodesTagAttribute[nodesTagAttribute.length - 1].value,
+			'url(goldenrod.jpg) no-repeat'
+		);
 
 		assert.equal(nodesTagUniversal.length, 22);
 		assert.equal(nodesTagUniversal[0].type, 'rule');
 		assert.equal(nodesTagUniversal[0].selector, 'body');
-		assert.equal(nodesTagUniversal[nodesTagUniversal.length - 1].type, 'decl');
-		assert.equal(nodesTagUniversal[nodesTagUniversal.length - 1].prop, 'font-weight');
-		assert.equal(nodesTagUniversal[nodesTagUniversal.length - 1].value, 'bold');
+		assert.equal(
+			nodesTagUniversal[nodesTagUniversal.length - 1].type,
+			'decl'
+		);
+		assert.equal(
+			nodesTagUniversal[nodesTagUniversal.length - 1].prop,
+			'font-weight'
+		);
+		assert.equal(
+			nodesTagUniversal[nodesTagUniversal.length - 1].value,
+			'bold'
+		);
 
 		assert.equal(nodesAttributeTag.length, 1);
 		assert.equal(nodesAttributeTag[0].prop, 'background-color');
@@ -69,8 +79,14 @@ describe('Combinators', function () {
 		assert.equal(nodesUniversalTag.length, 14);
 		assert.equal(nodesUniversalTag[0].prop, 'background-color');
 		assert.equal(nodesUniversalTag[0].value, 'lightgreen');
-		assert.equal(nodesUniversalTag[nodesUniversalTag.length - 1].prop, 'margin');
-		assert.equal(nodesUniversalTag[nodesUniversalTag.length - 1].value, '5px');
+		assert.equal(
+			nodesUniversalTag[nodesUniversalTag.length - 1].prop,
+			'margin'
+		);
+		assert.equal(
+			nodesUniversalTag[nodesUniversalTag.length - 1].value,
+			'5px'
+		);
 
 		assert.equal(nodesUniversalAttribute.length, 1);
 		assert.equal(nodesUniversalAttribute[0].prop, 'background-color');
@@ -78,12 +94,13 @@ describe('Combinators', function () {
 
 		assert.equal(nodesUniversalUniversal.length, 24);
 		assert.equal(nodesUniversalUniversal[0].selector, 'body');
-		assert.equal(nodesUniversalUniversal[nodesUniversalUniversal.length - 1].value, '5px');
-
+		assert.equal(
+			nodesUniversalUniversal[nodesUniversalUniversal.length - 1].value,
+			'5px'
+		);
 	});
 
-	it('should process child combinator (`>`)', async function () {
-
+	it('should process child combinator (`>`)', async function() {
 		const [
 			nodesTagTag,
 			nodesTagAttribute,
@@ -119,7 +136,10 @@ describe('Combinators', function () {
 
 		assert.equal(nodesTagUniversal.length, 10);
 		assert.equal(nodesTagUniversal[0].selector, 'body');
-		assert.equal(nodesTagUniversal[nodesTagUniversal.length - 1].selector, 'b');
+		assert.equal(
+			nodesTagUniversal[nodesTagUniversal.length - 1].selector,
+			'b'
+		);
 
 		assert.equal(nodesAttributeTag.length, 1);
 		assert.equal(nodesAttributeTag[0].prop, 'background-color');
@@ -136,8 +156,14 @@ describe('Combinators', function () {
 		assert.equal(nodesUniversalTag.length, 14);
 		assert.equal(nodesUniversalTag[0].prop, 'background-color');
 		assert.equal(nodesUniversalTag[0].value, 'lightgreen');
-		assert.equal(nodesUniversalTag[nodesUniversalTag.length - 1].prop, 'margin');
-		assert.equal(nodesUniversalTag[nodesUniversalTag.length - 1].value, '5px');
+		assert.equal(
+			nodesUniversalTag[nodesUniversalTag.length - 1].prop,
+			'margin'
+		);
+		assert.equal(
+			nodesUniversalTag[nodesUniversalTag.length - 1].value,
+			'5px'
+		);
 
 		assert.equal(nodesUniversalAttribute.length, 1);
 		assert.equal(nodesUniversalAttribute[0].prop, 'background-color');
@@ -145,12 +171,13 @@ describe('Combinators', function () {
 
 		assert.equal(nodesUniversalUniversal.length, 24);
 		assert.equal(nodesUniversalUniversal[0].selector, 'body');
-		assert.equal(nodesUniversalUniversal[nodesUniversalUniversal.length - 1].value, '5px');
-
+		assert.equal(
+			nodesUniversalUniversal[nodesUniversalUniversal.length - 1].value,
+			'5px'
+		);
 	});
 
-	it('should process adjacent sibling combinator (`+`)', async function () {
-
+	it('should process adjacent sibling combinator (`+`)', async function() {
 		const [
 			nodesTagTag,
 			nodesTagAttribute,
@@ -198,19 +225,23 @@ describe('Combinators', function () {
 
 		assert.equal(nodesUniversalTag.length, 10);
 		assert.equal(nodesUniversalTag[0].selector, '#main');
-		assert.equal(nodesUniversalTag[nodesUniversalTag.length - 1].selector, 'ul > li');
+		assert.equal(
+			nodesUniversalTag[nodesUniversalTag.length - 1].selector,
+			'ul > li'
+		);
 
 		assert.equal(nodesUniversalAttribute.length, 1);
 		assert.equal(nodesUniversalAttribute[0].selector, 'html');
 
 		assert.equal(nodesUniversalUniversal.length, 15);
 		assert.equal(nodesUniversalUniversal[0].type, 'atrule');
-		assert.equal(nodesUniversalUniversal[nodesUniversalUniversal.length - 1].type, 'rule');
-
+		assert.equal(
+			nodesUniversalUniversal[nodesUniversalUniversal.length - 1].type,
+			'rule'
+		);
 	});
 
-	it('should process general sibling combinator (`~`)', async function () {
-
+	it('should process general sibling combinator (`~`)', async function() {
 		const [
 			nodesTagTag,
 			nodesTagAttribute,
@@ -246,7 +277,10 @@ describe('Combinators', function () {
 
 		assert.equal(nodesTagUniversal.length, 10);
 		assert.equal(nodesTagUniversal[0].selector, '#main');
-		assert.equal(nodesTagUniversal[nodesTagUniversal.length - 1].selector, 'ul > li');
+		assert.equal(
+			nodesTagUniversal[nodesTagUniversal.length - 1].selector,
+			'ul > li'
+		);
 
 		assert.equal(nodesAttributeTag.length, 2);
 		assert.equal(nodesAttributeTag[0].selector, 'div');
@@ -257,19 +291,26 @@ describe('Combinators', function () {
 
 		assert.equal(nodesAttributeUniversal.length, 3);
 		assert.equal(nodesAttributeUniversal[0].selector, 'div');
-		assert.equal(nodesAttributeUniversal[nodesAttributeUniversal.length - 1].type, 'atrule');
+		assert.equal(
+			nodesAttributeUniversal[nodesAttributeUniversal.length - 1].type,
+			'atrule'
+		);
 
 		assert.equal(nodesUniversalTag.length, 10);
 		assert.equal(nodesUniversalTag[0].selector, '#main');
-		assert.equal(nodesUniversalTag[nodesUniversalTag.length - 1].selector, 'span');
+		assert.equal(
+			nodesUniversalTag[nodesUniversalTag.length - 1].selector,
+			'span'
+		);
 
 		assert.equal(nodesUniversalAttribute.length, 1);
 		assert.equal(nodesUniversalAttribute[0].selector, 'html');
 
 		assert.equal(nodesUniversalUniversal.length, 15);
 		assert.equal(nodesUniversalUniversal[0].type, 'atrule');
-		assert.equal(nodesUniversalUniversal[nodesUniversalUniversal.length - 1].type, 'decl');
-
+		assert.equal(
+			nodesUniversalUniversal[nodesUniversalUniversal.length - 1].type,
+			'decl'
+		);
 	});
-
 });

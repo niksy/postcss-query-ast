@@ -4,15 +4,13 @@ import beforeHook from './util/before-hook';
 
 let ast;
 
-before(async function () {
+before(async function() {
 	ast = await beforeHook();
 	return ast;
 });
 
-describe('Attribute selector', function () {
-
-	it('should process `[attr]`', async function () {
-
+describe('Attribute selector', function() {
+	it('should process `[attr]`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -33,12 +31,13 @@ describe('Attribute selector', function () {
 
 		assert.equal(nodesWithUniversal.length, 14);
 		assert.equal(nodesWithUniversal[0].prop, 'background-color');
-		assert.equal(nodesWithUniversal[nodesWithUniversal.length - 1].prop, 'margin');
-
+		assert.equal(
+			nodesWithUniversal[nodesWithUniversal.length - 1].prop,
+			'margin'
+		);
 	});
 
-	it('should process `[attr="value"]`', async function () {
-
+	it('should process `[attr="value"]`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -61,11 +60,9 @@ describe('Attribute selector', function () {
 		assert.equal(nodesWithUniversal.length, 2);
 		assert.equal(nodesWithUniversal[0].prop, 'background');
 		assert.equal(nodesWithUniversal[1].prop, 'outline-color');
-
 	});
 
-	it('should process `[attr="VALUE" i]`', async function () {
-
+	it('should process `[attr="VALUE" i]`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -88,11 +85,9 @@ describe('Attribute selector', function () {
 		assert.equal(nodesWithUniversal.length, 2);
 		assert.equal(nodesWithUniversal[0].prop, 'background');
 		assert.equal(nodesWithUniversal[1].prop, 'outline-color');
-
 	});
 
-	it('should process `[attr~="value"]`', async function () {
-
+	it('should process `[attr~="value"]`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -117,12 +112,13 @@ describe('Attribute selector', function () {
 
 		assert.equal(nodesWithUniversal.length, 1);
 		assert.equal(nodesWithUniversal[0].prop, 'background');
-		assert.equal(nodesWithUniversal[0].value, 'url(goldenrod.jpg) no-repeat');
-
+		assert.equal(
+			nodesWithUniversal[0].value,
+			'url(goldenrod.jpg) no-repeat'
+		);
 	});
 
-	it('should process `[attr~="VALUE" i]`', async function () {
-
+	it('should process `[attr~="VALUE" i]`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -147,12 +143,13 @@ describe('Attribute selector', function () {
 
 		assert.equal(nodesWithUniversal.length, 1);
 		assert.equal(nodesWithUniversal[0].prop, 'background');
-		assert.equal(nodesWithUniversal[0].value, 'url(goldenrod.jpg) no-repeat');
-
+		assert.equal(
+			nodesWithUniversal[0].value,
+			'url(goldenrod.jpg) no-repeat'
+		);
 	});
 
-	it('should process `[attr|="value"]`', async function () {
-
+	it('should process `[attr|="value"]`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -175,11 +172,9 @@ describe('Attribute selector', function () {
 
 		assert.equal(nodesWithUniversal.length, 1);
 		assert.equal(nodesWithUniversal[0].prop, 'font-weight');
-
 	});
 
-	it('should process `[attr|="VALUE" i]`', async function () {
-
+	it('should process `[attr|="VALUE" i]`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -202,11 +197,9 @@ describe('Attribute selector', function () {
 
 		assert.equal(nodesWithUniversal.length, 1);
 		assert.equal(nodesWithUniversal[0].prop, 'font-weight');
-
 	});
 
-	it('should process `[attr^="value"]`', async function () {
-
+	it('should process `[attr^="value"]`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -229,13 +222,17 @@ describe('Attribute selector', function () {
 		assert.equal(nodesWithUniversal.length, 5);
 		assert.equal(nodesWithUniversal[0].prop, 'background-color');
 		assert.equal(nodesWithUniversal[0].value, 'lightgreen');
-		assert.equal(nodesWithUniversal[nodesWithUniversal.length - 1].prop, 'background');
-		assert.equal(nodesWithUniversal[nodesWithUniversal.length - 1].value, 'url(goldenrod.jpg) no-repeat');
-
+		assert.equal(
+			nodesWithUniversal[nodesWithUniversal.length - 1].prop,
+			'background'
+		);
+		assert.equal(
+			nodesWithUniversal[nodesWithUniversal.length - 1].value,
+			'url(goldenrod.jpg) no-repeat'
+		);
 	});
 
-	it('should process `[attr^="VALUE" i]`', async function () {
-
+	it('should process `[attr^="VALUE" i]`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -258,13 +255,17 @@ describe('Attribute selector', function () {
 		assert.equal(nodesWithUniversal.length, 5);
 		assert.equal(nodesWithUniversal[0].prop, 'background-color');
 		assert.equal(nodesWithUniversal[0].value, 'lightgreen');
-		assert.equal(nodesWithUniversal[nodesWithUniversal.length - 1].prop, 'background');
-		assert.equal(nodesWithUniversal[nodesWithUniversal.length - 1].value, 'url(goldenrod.jpg) no-repeat');
-
+		assert.equal(
+			nodesWithUniversal[nodesWithUniversal.length - 1].prop,
+			'background'
+		);
+		assert.equal(
+			nodesWithUniversal[nodesWithUniversal.length - 1].value,
+			'url(goldenrod.jpg) no-repeat'
+		);
 	});
 
-	it('should process `[attr$="value"]`', async function () {
-
+	it('should process `[attr$="value"]`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -291,11 +292,9 @@ describe('Attribute selector', function () {
 		assert.equal(nodesWithUniversal[0].value, 'red');
 		assert.equal(nodesWithUniversal[1].prop, 'outline-color');
 		assert.equal(nodesWithUniversal[1].value, 'red');
-
 	});
 
-	it('should process `[attr$="VALUE" i]`', async function () {
-
+	it('should process `[attr$="VALUE" i]`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -322,11 +321,9 @@ describe('Attribute selector', function () {
 		assert.equal(nodesWithUniversal[0].value, 'red');
 		assert.equal(nodesWithUniversal[1].prop, 'outline-color');
 		assert.equal(nodesWithUniversal[1].value, 'red');
-
 	});
 
-	it('should process `[attr*="value"]`', async function () {
-
+	it('should process `[attr*="value"]`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -350,13 +347,17 @@ describe('Attribute selector', function () {
 		assert.equal(nodesWithUniversal.length, 5);
 		assert.equal(nodesWithUniversal[0].prop, 'background-color');
 		assert.equal(nodesWithUniversal[0].value, 'lightgreen');
-		assert.equal(nodesWithUniversal[nodesWithUniversal.length - 1].prop, 'background');
-		assert.equal(nodesWithUniversal[nodesWithUniversal.length - 1].value, 'url(goldenrod.jpg) no-repeat');
-
+		assert.equal(
+			nodesWithUniversal[nodesWithUniversal.length - 1].prop,
+			'background'
+		);
+		assert.equal(
+			nodesWithUniversal[nodesWithUniversal.length - 1].value,
+			'url(goldenrod.jpg) no-repeat'
+		);
 	});
 
-	it('should process `[attr*="VALUE" i]`', async function () {
-
+	it('should process `[attr*="VALUE" i]`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -380,13 +381,17 @@ describe('Attribute selector', function () {
 		assert.equal(nodesWithUniversal.length, 5);
 		assert.equal(nodesWithUniversal[0].prop, 'background-color');
 		assert.equal(nodesWithUniversal[0].value, 'lightgreen');
-		assert.equal(nodesWithUniversal[nodesWithUniversal.length - 1].prop, 'background');
-		assert.equal(nodesWithUniversal[nodesWithUniversal.length - 1].value, 'url(goldenrod.jpg) no-repeat');
-
+		assert.equal(
+			nodesWithUniversal[nodesWithUniversal.length - 1].prop,
+			'background'
+		);
+		assert.equal(
+			nodesWithUniversal[nodesWithUniversal.length - 1].value,
+			'url(goldenrod.jpg) no-repeat'
+		);
 	});
 
-	it('should process `[attr="/^v.+?e$/"]`', async function () {
-
+	it('should process `[attr="/^v.+?e$/"]`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -410,11 +415,9 @@ describe('Attribute selector', function () {
 		assert.equal(nodesWithUniversal[0].value, 'lightgreen');
 		assert.equal(nodesWithUniversal[1].prop, 'background');
 		assert.equal(nodesWithUniversal[1].value, 'green');
-
 	});
 
-	it('should process `[attr="/^V.+?E$/i"]`', async function () {
-
+	it('should process `[attr="/^V.+?E$/i"]`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -438,7 +441,5 @@ describe('Attribute selector', function () {
 		assert.equal(nodesWithUniversal[0].value, 'lightgreen');
 		assert.equal(nodesWithUniversal[1].prop, 'background');
 		assert.equal(nodesWithUniversal[1].value, 'green');
-
 	});
-
 });

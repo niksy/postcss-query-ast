@@ -4,15 +4,13 @@ import beforeHook from './util/before-hook';
 
 let ast;
 
-before(async function () {
+before(async function() {
 	ast = await beforeHook();
 	return ast;
 });
 
-describe('Pseudo classes', function () {
-
-	it('should process `:empty`', async function () {
-
+describe('Pseudo classes', function() {
+	it('should process `:empty`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -31,11 +29,9 @@ describe('Pseudo classes', function () {
 
 		assert.equal(nodesWithTag.length, 1);
 		assert.equal(nodesWithUniversal[0].selector, 'aside');
-
 	});
 
-	it('should process `:only-child`', async function () {
-
+	it('should process `:only-child`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -56,11 +52,9 @@ describe('Pseudo classes', function () {
 		assert.equal(nodesWithUniversal.length, 9);
 		assert.equal(nodesWithUniversal[0].type, 'decl');
 		assert.equal(nodesWithUniversal[0].prop, 'background-color');
-
 	});
 
-	it('should process `:first-child`', async function () {
-
+	it('should process `:first-child`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -81,12 +75,13 @@ describe('Pseudo classes', function () {
 
 		assert.equal(nodesWithUniversal.length, 14);
 		assert.equal(nodesWithUniversal[0].type, 'comment');
-		assert.equal(nodesWithUniversal[nodesWithUniversal.length - 1].type, 'decl');
-
+		assert.equal(
+			nodesWithUniversal[nodesWithUniversal.length - 1].type,
+			'decl'
+		);
 	});
 
-	it('should process `:last-child`', async function () {
-
+	it('should process `:last-child`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -107,12 +102,13 @@ describe('Pseudo classes', function () {
 
 		assert.equal(nodesWithUniversal.length, 14);
 		assert.equal(nodesWithUniversal[0].type, 'decl');
-		assert.equal(nodesWithUniversal[nodesWithUniversal.length - 1].type, 'decl');
-
+		assert.equal(
+			nodesWithUniversal[nodesWithUniversal.length - 1].type,
+			'decl'
+		);
 	});
 
-	it('should process `:nth-child(1)`', async function () {
-
+	it('should process `:nth-child(1)`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -133,12 +129,13 @@ describe('Pseudo classes', function () {
 
 		assert.equal(nodesWithUniversal.length, 14);
 		assert.equal(nodesWithUniversal[0].type, 'comment');
-		assert.equal(nodesWithUniversal[nodesWithUniversal.length - 1].type, 'decl');
-
+		assert.equal(
+			nodesWithUniversal[nodesWithUniversal.length - 1].type,
+			'decl'
+		);
 	});
 
-	it('should process `:nth-child(5n)`', async function () {
-
+	it('should process `:nth-child(5n)`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -159,12 +156,13 @@ describe('Pseudo classes', function () {
 
 		assert.equal(nodesWithUniversal.length, 2);
 		assert.equal(nodesWithUniversal[0].type, 'rule');
-		assert.equal(nodesWithUniversal[nodesWithUniversal.length - 1].type, 'rule');
-
+		assert.equal(
+			nodesWithUniversal[nodesWithUniversal.length - 1].type,
+			'rule'
+		);
 	});
 
-	it('should process `:nth-child(3n+4)`', async function () {
-
+	it('should process `:nth-child(3n+4)`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -185,12 +183,13 @@ describe('Pseudo classes', function () {
 
 		assert.equal(nodesWithUniversal.length, 3);
 		assert.equal(nodesWithUniversal[0].type, 'rule');
-		assert.equal(nodesWithUniversal[nodesWithUniversal.length - 1].type, 'rule');
-
+		assert.equal(
+			nodesWithUniversal[nodesWithUniversal.length - 1].type,
+			'rule'
+		);
 	});
 
-	it('should process `:nth-child(-n+3)`', async function () {
-
+	it('should process `:nth-child(-n+3)`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -211,12 +210,13 @@ describe('Pseudo classes', function () {
 
 		assert.equal(nodesWithUniversal.length, 21);
 		assert.equal(nodesWithUniversal[0].type, 'comment');
-		assert.equal(nodesWithUniversal[nodesWithUniversal.length - 1].type, 'decl');
-
+		assert.equal(
+			nodesWithUniversal[nodesWithUniversal.length - 1].type,
+			'decl'
+		);
 	});
 
-	it('should process `:nth-child(odd)`', async function () {
-
+	it('should process `:nth-child(odd)`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -237,12 +237,13 @@ describe('Pseudo classes', function () {
 
 		assert.equal(nodesWithUniversal.length, 20);
 		assert.equal(nodesWithUniversal[0].type, 'comment');
-		assert.equal(nodesWithUniversal[nodesWithUniversal.length - 1].type, 'decl');
-
+		assert.equal(
+			nodesWithUniversal[nodesWithUniversal.length - 1].type,
+			'decl'
+		);
 	});
 
-	it('should process `:nth-child(even)`', async function () {
-
+	it('should process `:nth-child(even)`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -263,12 +264,13 @@ describe('Pseudo classes', function () {
 
 		assert.equal(nodesWithUniversal.length, 9);
 		assert.equal(nodesWithUniversal[0].type, 'atrule');
-		assert.equal(nodesWithUniversal[nodesWithUniversal.length - 1].type, 'rule');
-
+		assert.equal(
+			nodesWithUniversal[nodesWithUniversal.length - 1].type,
+			'rule'
+		);
 	});
 
-	it('should process `:nth-last-child(1)`', async function () {
-
+	it('should process `:nth-last-child(1)`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -289,12 +291,13 @@ describe('Pseudo classes', function () {
 
 		assert.equal(nodesWithUniversal.length, 14);
 		assert.equal(nodesWithUniversal[0].type, 'decl');
-		assert.equal(nodesWithUniversal[nodesWithUniversal.length - 1].type, 'decl');
-
+		assert.equal(
+			nodesWithUniversal[nodesWithUniversal.length - 1].type,
+			'decl'
+		);
 	});
 
-	it('should process `:nth-last-child(5n)`', async function () {
-
+	it('should process `:nth-last-child(5n)`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -314,12 +317,13 @@ describe('Pseudo classes', function () {
 
 		assert.equal(nodesWithUniversal.length, 2);
 		assert.equal(nodesWithUniversal[0].type, 'comment');
-		assert.equal(nodesWithUniversal[nodesWithUniversal.length - 1].type, 'rule');
-
+		assert.equal(
+			nodesWithUniversal[nodesWithUniversal.length - 1].type,
+			'rule'
+		);
 	});
 
-	it('should process `:nth-last-child(3n+4)`', async function () {
-
+	it('should process `:nth-last-child(3n+4)`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -340,12 +344,13 @@ describe('Pseudo classes', function () {
 
 		assert.equal(nodesWithUniversal.length, 3);
 		assert.equal(nodesWithUniversal[0].type, 'atrule');
-		assert.equal(nodesWithUniversal[nodesWithUniversal.length - 1].type, 'rule');
-
+		assert.equal(
+			nodesWithUniversal[nodesWithUniversal.length - 1].type,
+			'rule'
+		);
 	});
 
-	it('should process `:nth-last-child(-n+3)`', async function () {
-
+	it('should process `:nth-last-child(-n+3)`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -366,12 +371,13 @@ describe('Pseudo classes', function () {
 
 		assert.equal(nodesWithUniversal.length, 21);
 		assert.equal(nodesWithUniversal[0].type, 'decl');
-		assert.equal(nodesWithUniversal[nodesWithUniversal.length - 1].type, 'decl');
-
+		assert.equal(
+			nodesWithUniversal[nodesWithUniversal.length - 1].type,
+			'decl'
+		);
 	});
 
-	it('should process `:nth-last-child(odd)`', async function () {
-
+	it('should process `:nth-last-child(odd)`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -392,12 +398,13 @@ describe('Pseudo classes', function () {
 
 		assert.equal(nodesWithUniversal.length, 20);
 		assert.equal(nodesWithUniversal[0].type, 'comment');
-		assert.equal(nodesWithUniversal[nodesWithUniversal.length - 1].type, 'decl');
-
+		assert.equal(
+			nodesWithUniversal[nodesWithUniversal.length - 1].type,
+			'decl'
+		);
 	});
 
-	it('should process `:nth-last-child(even)`', async function () {
-
+	it('should process `:nth-last-child(even)`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -418,12 +425,13 @@ describe('Pseudo classes', function () {
 
 		assert.equal(nodesWithUniversal.length, 9);
 		assert.equal(nodesWithUniversal[0].type, 'atrule');
-		assert.equal(nodesWithUniversal[nodesWithUniversal.length - 1].type, 'rule');
-
+		assert.equal(
+			nodesWithUniversal[nodesWithUniversal.length - 1].type,
+			'rule'
+		);
 	});
 
-	it('should process `:first-of-type`', async function () {
-
+	it('should process `:first-of-type`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -445,12 +453,13 @@ describe('Pseudo classes', function () {
 
 		assert.equal(nodesWithUniversal.length, 17);
 		assert.equal(nodesWithUniversal[0].type, 'comment');
-		assert.equal(nodesWithUniversal[nodesWithUniversal.length - 1].type, 'decl');
-
+		assert.equal(
+			nodesWithUniversal[nodesWithUniversal.length - 1].type,
+			'decl'
+		);
 	});
 
-	it('should process `:last-of-type`', async function () {
-
+	it('should process `:last-of-type`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -472,12 +481,13 @@ describe('Pseudo classes', function () {
 
 		assert.equal(nodesWithUniversal.length, 17);
 		assert.equal(nodesWithUniversal[0].type, 'comment');
-		assert.equal(nodesWithUniversal[nodesWithUniversal.length - 1].type, 'decl');
-
+		assert.equal(
+			nodesWithUniversal[nodesWithUniversal.length - 1].type,
+			'decl'
+		);
 	});
 
-	it('should process `:only-of-type`', async function () {
-
+	it('should process `:only-of-type`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -496,11 +506,9 @@ describe('Pseudo classes', function () {
 
 		assert.equal(nodesWithUniversal.length, 12);
 		assert.equal(nodesWithUniversal[0].type, 'comment');
-
 	});
 
-	it('should process `:nth-of-type(1)`', async function () {
-
+	it('should process `:nth-of-type(1)`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -522,12 +530,13 @@ describe('Pseudo classes', function () {
 
 		assert.equal(nodesWithUniversal.length, 17);
 		assert.equal(nodesWithUniversal[0].type, 'comment');
-		assert.equal(nodesWithUniversal[nodesWithUniversal.length - 1].type, 'decl');
-
+		assert.equal(
+			nodesWithUniversal[nodesWithUniversal.length - 1].type,
+			'decl'
+		);
 	});
 
-	it('should process `:nth-of-type(5n)`', async function () {
-
+	it('should process `:nth-of-type(5n)`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -546,11 +555,9 @@ describe('Pseudo classes', function () {
 
 		assert.equal(nodesWithUniversal.length, 1);
 		assert.equal(nodesWithUniversal[0].type, 'rule');
-
 	});
 
-	it('should process `:nth-of-type(3n+4)`', async function () {
-
+	it('should process `:nth-of-type(3n+4)`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -570,11 +577,9 @@ describe('Pseudo classes', function () {
 
 		assert.equal(nodesWithUniversal.length, 2);
 		assert.equal(nodesWithUniversal[0].type, 'rule');
-
 	});
 
-	it('should process `:nth-of-type(-n+3)`', async function () {
-
+	it('should process `:nth-of-type(-n+3)`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -594,11 +599,9 @@ describe('Pseudo classes', function () {
 
 		assert.equal(nodesWithUniversal.length, 24);
 		assert.equal(nodesWithUniversal[0].type, 'comment');
-
 	});
 
-	it('should process `:nth-of-type(odd)`', async function () {
-
+	it('should process `:nth-of-type(odd)`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -618,11 +621,9 @@ describe('Pseudo classes', function () {
 
 		assert.equal(nodesWithUniversal.length, 21);
 		assert.equal(nodesWithUniversal[0].type, 'comment');
-
 	});
 
-	it('should process `:nth-of-type(even)`', async function () {
-
+	it('should process `:nth-of-type(even)`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -642,11 +643,9 @@ describe('Pseudo classes', function () {
 
 		assert.equal(nodesWithUniversal.length, 8);
 		assert.equal(nodesWithUniversal[0].type, 'rule');
-
 	});
 
-	it('should process `:nth-last-of-type(1)`', async function () {
-
+	it('should process `:nth-last-of-type(1)`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -668,12 +667,13 @@ describe('Pseudo classes', function () {
 
 		assert.equal(nodesWithUniversal.length, 17);
 		assert.equal(nodesWithUniversal[0].type, 'comment');
-		assert.equal(nodesWithUniversal[nodesWithUniversal.length - 1].type, 'decl');
-
+		assert.equal(
+			nodesWithUniversal[nodesWithUniversal.length - 1].type,
+			'decl'
+		);
 	});
 
-	it('should process `:nth-last-of-type(5n)`', async function () {
-
+	it('should process `:nth-last-of-type(5n)`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -692,11 +692,9 @@ describe('Pseudo classes', function () {
 
 		assert.equal(nodesWithUniversal.length, 1);
 		assert.equal(nodesWithUniversal[0].type, 'rule');
-
 	});
 
-	it('should process `:nth-last-of-type(3n+4)`', async function () {
-
+	it('should process `:nth-last-of-type(3n+4)`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -716,11 +714,9 @@ describe('Pseudo classes', function () {
 
 		assert.equal(nodesWithUniversal.length, 2);
 		assert.equal(nodesWithUniversal[0].type, 'rule');
-
 	});
 
-	it('should process `:nth-last-of-type(-n+3)`', async function () {
-
+	it('should process `:nth-last-of-type(-n+3)`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -740,11 +736,9 @@ describe('Pseudo classes', function () {
 
 		assert.equal(nodesWithUniversal.length, 24);
 		assert.equal(nodesWithUniversal[0].type, 'comment');
-
 	});
 
-	it('should process `:nth-last-of-type(odd)`', async function () {
-
+	it('should process `:nth-last-of-type(odd)`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -764,11 +758,9 @@ describe('Pseudo classes', function () {
 
 		assert.equal(nodesWithUniversal.length, 21);
 		assert.equal(nodesWithUniversal[0].type, 'comment');
-
 	});
 
-	it('should process `:nth-last-of-type(even)`', async function () {
-
+	it('should process `:nth-last-of-type(even)`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -788,11 +780,9 @@ describe('Pseudo classes', function () {
 
 		assert.equal(nodesWithUniversal.length, 8);
 		assert.equal(nodesWithUniversal[0].type, 'rule');
-
 	});
 
-	it('should process `:matches()`', async function () {
-
+	it('should process `:matches()`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -815,11 +805,9 @@ describe('Pseudo classes', function () {
 		assert.equal(nodesWithUniversal.length, 2);
 		assert.equal(nodesWithUniversal[0].prop, 'background');
 		assert.equal(nodesWithUniversal[1].prop, 'outline-color');
-
 	});
 
-	it('should process `:not()`', async function () {
-
+	it('should process `:not()`', async function() {
 		const [
 			nodesTagless,
 			nodesWithTag,
@@ -840,12 +828,13 @@ describe('Pseudo classes', function () {
 
 		assert.equal(nodesWithUniversal.length, 25);
 		assert.equal(nodesWithUniversal[0].type, 'comment');
-		assert.equal(nodesWithUniversal[nodesWithUniversal.length - 1].type, 'decl');
-
+		assert.equal(
+			nodesWithUniversal[nodesWithUniversal.length - 1].type,
+			'decl'
+		);
 	});
 
-	it('should process invalid `:nth-child`', async function () {
-
+	it('should process invalid `:nth-child`', async function() {
 		const [
 			nodesWithInvalidCombinator,
 			nodesWithUnparseableValue
@@ -856,7 +845,5 @@ describe('Pseudo classes', function () {
 
 		assert.equal(nodesWithInvalidCombinator.length, 0);
 		assert.equal(nodesWithUnparseableValue.length, 0);
-
 	});
-
 });

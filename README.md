@@ -6,22 +6,31 @@ Query PostCSS AST with CSS selectors.
 
 Supported selectors are:
 
-* [Type selectors][mdn-type-selector]: `rule`, `atrule`, `decl`, `comment`
-* [Universal selector](mdn-universal-selector): `*`
-* [Attribute selectors][mdn-attribute-selector]: `[attr=value]`, `[attr=value]`, `[attr~=value]`, `[attr|=value]`, `[attr^=value]`, `[attr$=value]`, `[attr*=value]`
-* [Descendant combinator][mdn-descendant-combinator]: `rule decl`
-* [Child combinator][mdn-child-combinator]: `atrule > rule`
-* [Adjacent sibling combinator][mdn-adjacent-sibling-combinator]: `rule + rule`
-* [General sibling combinator][mdn-general-sibling-combinator]: `rule ~ rule`
-* Child pseudo classes ([`:first-child`][mdn-first-child], [`:last-child`][mdn-last-child], [`:nth-child`][mdn-nth-child], [`:nth-last-child`][mdn-nth-last-child], [`:only-child`][mdn-only-child]): `rule:first-child`
-* Type pseudo classes ([`:first-of-type`][mdn-first-of-type], [`:last-of-type`][mdn-last-of-type], [`:nth-of-type`][mdn-nth-of-type], [`:nth-last-of-type`][mdn-nth-last-of-type], [`:only-of-type`][mdn-only-of-type]): `rule:first-of-type`
-* [Empty nodes][mdn-empty]: `rule:empty`
-* [Matches][mdn-matches]: `:matches(rule, atrule)`
-* [Negation][mdn-not]: `:not(atrule)`
+-   [Type selectors][mdn-type-selector]: `rule`, `atrule`, `decl`, `comment`
+-   [Universal selector](mdn-universal-selector): `*`
+-   [Attribute selectors][mdn-attribute-selector]: `[attr=value]`,
+    `[attr=value]`, `[attr~=value]`, `[attr|=value]`, `[attr^=value]`,
+    `[attr$=value]`, `[attr*=value]`
+-   [Descendant combinator][mdn-descendant-combinator]: `rule decl`
+-   [Child combinator][mdn-child-combinator]: `atrule > rule`
+-   [Adjacent sibling combinator][mdn-adjacent-sibling-combinator]:
+    `rule + rule`
+-   [General sibling combinator][mdn-general-sibling-combinator]: `rule ~ rule`
+-   Child pseudo classes ([`:first-child`][mdn-first-child],
+    [`:last-child`][mdn-last-child], [`:nth-child`][mdn-nth-child],
+    [`:nth-last-child`][mdn-nth-last-child], [`:only-child`][mdn-only-child]):
+    `rule:first-child`
+-   Type pseudo classes ([`:first-of-type`][mdn-first-of-type],
+    [`:last-of-type`][mdn-last-of-type], [`:nth-of-type`][mdn-nth-of-type],
+    [`:nth-last-of-type`][mdn-nth-last-of-type],
+    [`:only-of-type`][mdn-only-of-type]): `rule:first-of-type`
+-   [Empty nodes][mdn-empty]: `rule:empty`
+-   [Matches][mdn-matches]: `:matches(rule, atrule)`
+-   [Negation][mdn-not]: `:not(atrule)`
 
 In addition to standard selectors, there are also custom selectors:
 
-* Attribute selector with regular expression: `[attr="/^value$/i"]`
+-   Attribute selector with regular expression: `[attr="/^value$/i"]`
 
 ## Install
 
@@ -31,7 +40,8 @@ npm install postcss-query-ast --save
 
 ## Usage
 
-Querying AST from following CSS will give us only `body` rule with `jackie` ID attribute.
+Querying AST from following CSS will give us only `body` rule with `jackie` ID
+attribute.
 
 ```css
 body {
@@ -50,7 +60,7 @@ a {
 ```js
 import queryAst from 'postcss-query-ast';
 
-queryAst('rule[selector="body#jackie"]').then(( ast ) => {
+queryAst('rule[selector="body#jackie"]').then((ast) => {
 	/* [ Rule {
     raws: { before: '\n\n', between: ' ', semicolon: true, after: '\n' },
     type: 'rule',
@@ -94,6 +104,8 @@ PostCSS AST.
 
 MIT © [Ivan Nikolić](http://ivannikolic.com)
 
+<!-- prettier-ignore-start -->
+
 [ci]: https://travis-ci.com/niksy/postcss-query-ast
 [ci-img]: https://travis-ci.com/niksy/postcss-query-ast.svg?branch=master
 [mdn-type-selector]: https://developer.mozilla.org/en-US/docs/Web/CSS/Type_selectors
@@ -116,3 +128,5 @@ MIT © [Ivan Nikolić](http://ivannikolic.com)
 [mdn-empty]: https://developer.mozilla.org/en-US/docs/Web/CSS/:empty
 [mdn-matches]: https://developer.mozilla.org/en-US/docs/Web/CSS/:matches
 [mdn-not]: https://developer.mozilla.org/en-US/docs/Web/CSS/:not
+
+<!-- prettier-ignore-end -->
