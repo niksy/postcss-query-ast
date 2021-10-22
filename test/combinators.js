@@ -1,16 +1,18 @@
+// @ts-nocheck
+
 import assert from 'assert';
-import fn from '../index';
+import function_ from '../index';
 import beforeHook from './util/before-hook';
 
 let ast;
 
-before(async function() {
+before(async function () {
 	ast = await beforeHook();
 	return ast;
 });
 
-describe('Combinators', function() {
-	it('should process descendant combinator (` `)', async function() {
+describe('Combinators', function () {
+	it('should process descendant combinator (` `)', async function () {
 		const [
 			nodesTagTag,
 			nodesTagAttribute,
@@ -24,17 +26,17 @@ describe('Combinators', function() {
 			nodesUniversalAttribute,
 			nodesUniversalUniversal
 		] = await Promise.all([
-			fn('rule decl', ast),
-			fn('rule [prop="background"]', ast),
-			fn('atrule *', ast),
+			function_('rule decl', ast),
+			function_('rule [prop="background"]', ast),
+			function_('atrule *', ast),
 
-			fn('[selector="body"] decl', ast),
-			fn('[selector="body"] [value="lightgreen"]', ast),
-			fn('[selector="body"] *', ast),
+			function_('[selector="body"] decl', ast),
+			function_('[selector="body"] [value="lightgreen"]', ast),
+			function_('[selector="body"] *', ast),
 
-			fn('* decl', ast),
-			fn('* [value="lightgreen"]', ast),
-			fn('* *', ast)
+			function_('* decl', ast),
+			function_('* [value="lightgreen"]', ast),
+			function_('* *', ast)
 		]);
 
 		assert.equal(nodesTagTag.length, 14);
@@ -100,7 +102,7 @@ describe('Combinators', function() {
 		);
 	});
 
-	it('should process child combinator (`>`)', async function() {
+	it('should process child combinator (`>`)', async function () {
 		const [
 			nodesTagTag,
 			nodesTagAttribute,
@@ -114,17 +116,17 @@ describe('Combinators', function() {
 			nodesUniversalAttribute,
 			nodesUniversalUniversal
 		] = await Promise.all([
-			fn('atrule > rule', ast),
-			fn('atrule > [selector="body"]', ast),
-			fn('atrule > *', ast),
+			function_('atrule > rule', ast),
+			function_('atrule > [selector="body"]', ast),
+			function_('atrule > *', ast),
 
-			fn('[selector="body"] > decl', ast),
-			fn('[selector="body"] > [value="lightgreen"]', ast),
-			fn('[selector="body"] > *', ast),
+			function_('[selector="body"] > decl', ast),
+			function_('[selector="body"] > [value="lightgreen"]', ast),
+			function_('[selector="body"] > *', ast),
 
-			fn('* > decl', ast),
-			fn('* > [value="lightgreen"]', ast),
-			fn('* > *', ast)
+			function_('* > decl', ast),
+			function_('* > [value="lightgreen"]', ast),
+			function_('* > *', ast)
 		]);
 
 		assert.equal(nodesTagTag.length, 9);
@@ -177,7 +179,7 @@ describe('Combinators', function() {
 		);
 	});
 
-	it('should process adjacent sibling combinator (`+`)', async function() {
+	it('should process adjacent sibling combinator (`+`)', async function () {
 		const [
 			nodesTagTag,
 			nodesTagAttribute,
@@ -191,17 +193,17 @@ describe('Combinators', function() {
 			nodesUniversalAttribute,
 			nodesUniversalUniversal
 		] = await Promise.all([
-			fn('rule + rule', ast),
-			fn('rule + [selector="html"]', ast),
-			fn('rule + *', ast),
+			function_('rule + rule', ast),
+			function_('rule + [selector="html"]', ast),
+			function_('rule + *', ast),
 
-			fn('[selector="html"] + rule', ast),
-			fn('[selector="html"] + [selector="div"]', ast),
-			fn('[selector="html"] + *', ast),
+			function_('[selector="html"] + rule', ast),
+			function_('[selector="html"] + [selector="div"]', ast),
+			function_('[selector="html"] + *', ast),
 
-			fn('* + rule', ast),
-			fn('* + [selector="html"]', ast),
-			fn('* + *', ast)
+			function_('* + rule', ast),
+			function_('* + [selector="html"]', ast),
+			function_('* + *', ast)
 		]);
 
 		assert.equal(nodesTagTag.length, 9);
@@ -241,7 +243,7 @@ describe('Combinators', function() {
 		);
 	});
 
-	it('should process general sibling combinator (`~`)', async function() {
+	it('should process general sibling combinator (`~`)', async function () {
 		const [
 			nodesTagTag,
 			nodesTagAttribute,
@@ -255,17 +257,17 @@ describe('Combinators', function() {
 			nodesUniversalAttribute,
 			nodesUniversalUniversal
 		] = await Promise.all([
-			fn('rule ~ rule', ast),
-			fn('rule ~ [selector="html"]', ast),
-			fn('rule ~ *', ast),
+			function_('rule ~ rule', ast),
+			function_('rule ~ [selector="html"]', ast),
+			function_('rule ~ *', ast),
 
-			fn('[selector="html"] ~ rule', ast),
-			fn('[selector="html"] ~ [selector="div"]', ast),
-			fn('[selector="html"] ~ *', ast),
+			function_('[selector="html"] ~ rule', ast),
+			function_('[selector="html"] ~ [selector="div"]', ast),
+			function_('[selector="html"] ~ *', ast),
 
-			fn('* ~ rule', ast),
-			fn('* ~ [selector="html"]', ast),
-			fn('* ~ *', ast)
+			function_('* ~ rule', ast),
+			function_('* ~ [selector="html"]', ast),
+			function_('* ~ *', ast)
 		]);
 
 		assert.equal(nodesTagTag.length, 9);

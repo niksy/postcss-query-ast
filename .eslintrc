@@ -7,6 +7,11 @@
 		"eslint-config-prettier"
 	],
 	"plugins": ["eslint-plugin-prettier"],
+	"settings": {
+		"jsdoc": {
+			"preferredTypes": ["postcss", "selectorParser"]
+		}
+	},
 	"rules": {
 		"prettier/prettier": 1
 	},

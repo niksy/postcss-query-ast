@@ -1,25 +1,24 @@
+// @ts-nocheck
+
 import assert from 'assert';
-import fn from '../index';
+import function_ from '../index';
 import beforeHook from './util/before-hook';
 
 let ast;
 
-before(async function() {
+before(async function () {
 	ast = await beforeHook();
 	return ast;
 });
 
-describe('Attribute selector', function() {
-	it('should process `[attr]`', async function() {
-		const [
-			nodesTagless,
-			nodesWithTag,
-			nodesWithUniversal
-		] = await Promise.all([
-			fn('[selector]', ast),
-			fn('atrule[params]', ast),
-			fn('*[prop]', ast)
-		]);
+describe('Attribute selector', function () {
+	it('should process `[attr]`', async function () {
+		const [nodesTagless, nodesWithTag, nodesWithUniversal] =
+			await Promise.all([
+				function_('[selector]', ast),
+				function_('atrule[params]', ast),
+				function_('*[prop]', ast)
+			]);
 
 		assert.equal(nodesTagless.length, 12);
 		assert.equal(nodesTagless[0].selector, 'body');
@@ -37,16 +36,13 @@ describe('Attribute selector', function() {
 		);
 	});
 
-	it('should process `[attr="value"]`', async function() {
-		const [
-			nodesTagless,
-			nodesWithTag,
-			nodesWithUniversal
-		] = await Promise.all([
-			fn('[selector="body"]', ast),
-			fn('decl[prop="border"]', ast),
-			fn('*[value="red"]', ast)
-		]);
+	it('should process `[attr="value"]`', async function () {
+		const [nodesTagless, nodesWithTag, nodesWithUniversal] =
+			await Promise.all([
+				function_('[selector="body"]', ast),
+				function_('decl[prop="border"]', ast),
+				function_('*[value="red"]', ast)
+			]);
 
 		assert.equal(nodesTagless.length, 1);
 		assert.equal(nodesTagless[0].selector, 'body');
@@ -62,16 +58,13 @@ describe('Attribute selector', function() {
 		assert.equal(nodesWithUniversal[1].prop, 'outline-color');
 	});
 
-	it('should process `[attr="VALUE" i]`', async function() {
-		const [
-			nodesTagless,
-			nodesWithTag,
-			nodesWithUniversal
-		] = await Promise.all([
-			fn('[selector="BODY" i]', ast),
-			fn('decl[prop="BORDER" i]', ast),
-			fn('*[value="RED" i]', ast)
-		]);
+	it('should process `[attr="VALUE" i]`', async function () {
+		const [nodesTagless, nodesWithTag, nodesWithUniversal] =
+			await Promise.all([
+				function_('[selector="BODY" i]', ast),
+				function_('decl[prop="BORDER" i]', ast),
+				function_('*[value="RED" i]', ast)
+			]);
 
 		assert.equal(nodesTagless.length, 1);
 		assert.equal(nodesTagless[0].selector, 'body');
@@ -87,16 +80,13 @@ describe('Attribute selector', function() {
 		assert.equal(nodesWithUniversal[1].prop, 'outline-color');
 	});
 
-	it('should process `[attr~="value"]`', async function() {
-		const [
-			nodesTagless,
-			nodesWithTag,
-			nodesWithUniversal
-		] = await Promise.all([
-			fn('[selector~="li"]', ast),
-			fn('decl[value~="magenta"]', ast),
-			fn('*[value~="no-repeat"]', ast)
-		]);
+	it('should process `[attr~="value"]`', async function () {
+		const [nodesTagless, nodesWithTag, nodesWithUniversal] =
+			await Promise.all([
+				function_('[selector~="li"]', ast),
+				function_('decl[value~="magenta"]', ast),
+				function_('*[value~="no-repeat"]', ast)
+			]);
 
 		assert.equal(nodesTagless.length, 2);
 		assert.equal(nodesTagless[0].selector, 'ul li');
@@ -118,16 +108,13 @@ describe('Attribute selector', function() {
 		);
 	});
 
-	it('should process `[attr~="VALUE" i]`', async function() {
-		const [
-			nodesTagless,
-			nodesWithTag,
-			nodesWithUniversal
-		] = await Promise.all([
-			fn('[selector~="LI" i]', ast),
-			fn('decl[value~="MAGENTA" i]', ast),
-			fn('*[value~="NO-REPEAT" i]', ast)
-		]);
+	it('should process `[attr~="VALUE" i]`', async function () {
+		const [nodesTagless, nodesWithTag, nodesWithUniversal] =
+			await Promise.all([
+				function_('[selector~="LI" i]', ast),
+				function_('decl[value~="MAGENTA" i]', ast),
+				function_('*[value~="NO-REPEAT" i]', ast)
+			]);
 
 		assert.equal(nodesTagless.length, 2);
 		assert.equal(nodesTagless[0].selector, 'ul li');
@@ -149,16 +136,13 @@ describe('Attribute selector', function() {
 		);
 	});
 
-	it('should process `[attr|="value"]`', async function() {
-		const [
-			nodesTagless,
-			nodesWithTag,
-			nodesWithUniversal
-		] = await Promise.all([
-			fn('[selector|="li"]', ast),
-			fn('decl[prop|="border"]', ast),
-			fn('*[prop|="font"]', ast)
-		]);
+	it('should process `[attr|="value"]`', async function () {
+		const [nodesTagless, nodesWithTag, nodesWithUniversal] =
+			await Promise.all([
+				function_('[selector|="li"]', ast),
+				function_('decl[prop|="border"]', ast),
+				function_('*[prop|="font"]', ast)
+			]);
 
 		assert.equal(nodesTagless.length, 2);
 		assert.equal(nodesTagless[0].selector, 'li-li');
@@ -174,16 +158,13 @@ describe('Attribute selector', function() {
 		assert.equal(nodesWithUniversal[0].prop, 'font-weight');
 	});
 
-	it('should process `[attr|="VALUE" i]`', async function() {
-		const [
-			nodesTagless,
-			nodesWithTag,
-			nodesWithUniversal
-		] = await Promise.all([
-			fn('[selector|="LI" i]', ast),
-			fn('decl[prop|="BORDER" i]', ast),
-			fn('*[prop|="FONT" i]', ast)
-		]);
+	it('should process `[attr|="VALUE" i]`', async function () {
+		const [nodesTagless, nodesWithTag, nodesWithUniversal] =
+			await Promise.all([
+				function_('[selector|="LI" i]', ast),
+				function_('decl[prop|="BORDER" i]', ast),
+				function_('*[prop|="FONT" i]', ast)
+			]);
 
 		assert.equal(nodesTagless.length, 2);
 		assert.equal(nodesTagless[0].selector, 'li-li');
@@ -199,16 +180,13 @@ describe('Attribute selector', function() {
 		assert.equal(nodesWithUniversal[0].prop, 'font-weight');
 	});
 
-	it('should process `[attr^="value"]`', async function() {
-		const [
-			nodesTagless,
-			nodesWithTag,
-			nodesWithUniversal
-		] = await Promise.all([
-			fn('[selector^="h"]', ast),
-			fn('decl[value^="5"]', ast),
-			fn('*[prop^="background"]', ast)
-		]);
+	it('should process `[attr^="value"]`', async function () {
+		const [nodesTagless, nodesWithTag, nodesWithUniversal] =
+			await Promise.all([
+				function_('[selector^="h"]', ast),
+				function_('decl[value^="5"]', ast),
+				function_('*[prop^="background"]', ast)
+			]);
 
 		assert.equal(nodesTagless.length, 1);
 		assert.equal(nodesTagless[0].selector, 'html');
@@ -232,16 +210,13 @@ describe('Attribute selector', function() {
 		);
 	});
 
-	it('should process `[attr^="VALUE" i]`', async function() {
-		const [
-			nodesTagless,
-			nodesWithTag,
-			nodesWithUniversal
-		] = await Promise.all([
-			fn('[selector^="H" i]', ast),
-			fn('decl[value^="5" i]', ast),
-			fn('*[prop^="BACKGROUND" i]', ast)
-		]);
+	it('should process `[attr^="VALUE" i]`', async function () {
+		const [nodesTagless, nodesWithTag, nodesWithUniversal] =
+			await Promise.all([
+				function_('[selector^="H" i]', ast),
+				function_('decl[value^="5" i]', ast),
+				function_('*[prop^="BACKGROUND" i]', ast)
+			]);
 
 		assert.equal(nodesTagless.length, 1);
 		assert.equal(nodesTagless[0].selector, 'html');
@@ -265,16 +240,13 @@ describe('Attribute selector', function() {
 		);
 	});
 
-	it('should process `[attr$="value"]`', async function() {
-		const [
-			nodesTagless,
-			nodesWithTag,
-			nodesWithUniversal
-		] = await Promise.all([
-			fn('[selector$="n"]', ast),
-			fn('decl[value$="green"]', ast),
-			fn('*[value$="red"]', ast)
-		]);
+	it('should process `[attr$="value"]`', async function () {
+		const [nodesTagless, nodesWithTag, nodesWithUniversal] =
+			await Promise.all([
+				function_('[selector$="n"]', ast),
+				function_('decl[value$="green"]', ast),
+				function_('*[value$="red"]', ast)
+			]);
 
 		assert.equal(nodesTagless.length, 3);
 		assert.equal(nodesTagless[0].selector, '#main');
@@ -294,16 +266,13 @@ describe('Attribute selector', function() {
 		assert.equal(nodesWithUniversal[1].value, 'red');
 	});
 
-	it('should process `[attr$="VALUE" i]`', async function() {
-		const [
-			nodesTagless,
-			nodesWithTag,
-			nodesWithUniversal
-		] = await Promise.all([
-			fn('[selector$="N" i]', ast),
-			fn('decl[value$="GREEN" i]', ast),
-			fn('*[value$="RED" i]', ast)
-		]);
+	it('should process `[attr$="VALUE" i]`', async function () {
+		const [nodesTagless, nodesWithTag, nodesWithUniversal] =
+			await Promise.all([
+				function_('[selector$="N" i]', ast),
+				function_('decl[value$="GREEN" i]', ast),
+				function_('*[value$="RED" i]', ast)
+			]);
 
 		assert.equal(nodesTagless.length, 3);
 		assert.equal(nodesTagless[0].selector, '#main');
@@ -323,16 +292,13 @@ describe('Attribute selector', function() {
 		assert.equal(nodesWithUniversal[1].value, 'red');
 	});
 
-	it('should process `[attr*="value"]`', async function() {
-		const [
-			nodesTagless,
-			nodesWithTag,
-			nodesWithUniversal
-		] = await Promise.all([
-			fn('[selector*="ai"]', ast),
-			fn('decl[value*="ee"]', ast),
-			fn('*[value*="re"]', ast)
-		]);
+	it('should process `[attr*="value"]`', async function () {
+		const [nodesTagless, nodesWithTag, nodesWithUniversal] =
+			await Promise.all([
+				function_('[selector*="ai"]', ast),
+				function_('decl[value*="ee"]', ast),
+				function_('*[value*="re"]', ast)
+			]);
 
 		assert.equal(nodesTagless.length, 2);
 		assert.equal(nodesTagless[0].selector, '#main');
@@ -357,16 +323,13 @@ describe('Attribute selector', function() {
 		);
 	});
 
-	it('should process `[attr*="VALUE" i]`', async function() {
-		const [
-			nodesTagless,
-			nodesWithTag,
-			nodesWithUniversal
-		] = await Promise.all([
-			fn('[selector*="AI" i]', ast),
-			fn('decl[value*="EE" i]', ast),
-			fn('*[value*="RE" i]', ast)
-		]);
+	it('should process `[attr*="VALUE" i]`', async function () {
+		const [nodesTagless, nodesWithTag, nodesWithUniversal] =
+			await Promise.all([
+				function_('[selector*="AI" i]', ast),
+				function_('decl[value*="EE" i]', ast),
+				function_('*[value*="RE" i]', ast)
+			]);
 
 		assert.equal(nodesTagless.length, 2);
 		assert.equal(nodesTagless[0].selector, '#main');
@@ -391,16 +354,13 @@ describe('Attribute selector', function() {
 		);
 	});
 
-	it('should process `[attr="/^v.+?e$/"]`', async function() {
-		const [
-			nodesTagless,
-			nodesWithTag,
-			nodesWithUniversal
-		] = await Promise.all([
-			fn('[selector="/^#m.+?n$/"]', ast),
-			fn('decl[value="/^green$/"]', ast),
-			fn('*[value="/green$/"]', ast)
-		]);
+	it('should process `[attr="/^v.+?e$/"]`', async function () {
+		const [nodesTagless, nodesWithTag, nodesWithUniversal] =
+			await Promise.all([
+				function_('[selector="/^#m.+?n$/"]', ast),
+				function_('decl[value="/^green$/"]', ast),
+				function_('*[value="/green$/"]', ast)
+			]);
 
 		assert.equal(nodesTagless.length, 2);
 		assert.equal(nodesTagless[0].selector, '#main');
@@ -417,16 +377,13 @@ describe('Attribute selector', function() {
 		assert.equal(nodesWithUniversal[1].value, 'green');
 	});
 
-	it('should process `[attr="/^V.+?E$/i"]`', async function() {
-		const [
-			nodesTagless,
-			nodesWithTag,
-			nodesWithUniversal
-		] = await Promise.all([
-			fn('[selector="/^#M.+?N$/i"]', ast),
-			fn('decl[value="/^GREEN$/i"]', ast),
-			fn('*[value="/GREEN$/i"]', ast)
-		]);
+	it('should process `[attr="/^V.+?E$/i"]`', async function () {
+		const [nodesTagless, nodesWithTag, nodesWithUniversal] =
+			await Promise.all([
+				function_('[selector="/^#M.+?N$/i"]', ast),
+				function_('decl[value="/^GREEN$/i"]', ast),
+				function_('*[value="/GREEN$/i"]', ast)
+			]);
 
 		assert.equal(nodesTagless.length, 2);
 		assert.equal(nodesTagless[0].selector, '#main');

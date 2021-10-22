@@ -2,6 +2,7 @@
 
 const path = require('path');
 const { promises: fs } = require('fs');
+const { default: babel } = require('@rollup/plugin-babel');
 const execa = require('execa');
 const cpy = require('cpy');
 
@@ -94,6 +95,10 @@ module.exports = {
 					}
 				}
 			};
-		})()
+		})(),
+		babel({
+			babelHelpers: 'bundled',
+			exclude: 'node_modules/**'
+		})
 	]
 };

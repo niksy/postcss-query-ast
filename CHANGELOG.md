@@ -2,6 +2,10 @@
 
 ## [Unreleased][]
 
+### Added
+
+-   TypeScript types
+
 ## [2.0.0][] - 2020-10-08
 
 ### Added

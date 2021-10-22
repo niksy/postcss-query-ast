@@ -1,13 +1,13 @@
-import fs from 'fs';
+import { promises as fs } from 'fs';
 import path from 'path';
 import postcss from 'postcss';
-import pify from 'pify';
 
+/** @type {import('postcss').Root} */
 let ast;
 
 export default async () => {
 	if (typeof ast === 'undefined') {
-		const css = await pify(fs.readFile)(
+		const css = await fs.readFile(
 			path.resolve(__dirname, '../fixtures/index.css'),
 			'utf8'
 		);

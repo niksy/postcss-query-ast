@@ -89,19 +89,19 @@ const postcssAst = [];
 
 ### queryAst(query, ast)
 
-Returns: `Promise`
+Returns: `Promise<(Root | Rule | AtRule | Declaration | Comment)[]>`
 
 Queries PostCSS with CSS selector.
 
 #### query
 
-Type: `String`
+Type: `string`
 
 CSS selector.
 
 #### ast
 
-Type: `PostCSS.Node`
+Type: `Root`
 
 PostCSS AST.
 

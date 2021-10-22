@@ -1,25 +1,27 @@
+// @ts-nocheck
+
 import assert from 'assert';
-import fn from '../index';
+import function_ from '../index';
 import beforeHook from './util/before-hook';
 
 let ast;
 
-before(async function() {
+before(async function () {
 	ast = await beforeHook();
 	return ast;
 });
 
-describe('Type and universal selector', function() {
-	it('should process `atrule`', async function() {
-		const nodes = await fn('atrule', ast);
+describe('Type and universal selector', function () {
+	it('should process `atrule`', async function () {
+		const nodes = await function_('atrule', ast);
 
 		assert.equal(nodes.length, 2);
 		assert.ok(nodes.every((node) => node.type === 'atrule'));
 		assert.equal(nodes[0].params, 'screen and (min-width: 480px)');
 	});
 
-	it('should process `rule`', async function() {
-		const nodes = await fn('rule', ast);
+	it('should process `rule`', async function () {
+		const nodes = await function_('rule', ast);
 
 		assert.equal(nodes.length, 12);
 		assert.ok(nodes.every((node) => node.type === 'rule'));
@@ -27,8 +29,8 @@ describe('Type and universal selector', function() {
 		assert.equal(nodes[nodes.length - 1].selector, 'ul > li');
 	});
 
-	it('should process `decl`', async function() {
-		const nodes = await fn('decl', ast);
+	it('should process `decl`', async function () {
+		const nodes = await function_('decl', ast);
 
 		assert.equal(nodes.length, 14);
 		assert.ok(nodes.every((node) => node.type === 'decl'));
@@ -38,23 +40,23 @@ describe('Type and universal selector', function() {
 		assert.equal(nodes[nodes.length - 1].value, '5px');
 	});
 
-	it('should process `comment`', async function() {
-		const nodes = await fn('comment', ast);
+	it('should process `comment`', async function () {
+		const nodes = await function_('comment', ast);
 
 		assert.equal(nodes.length, 1);
 		assert.ok(nodes.every((node) => node.type === 'comment'));
 	});
 
-	it('should process `*`', async function() {
-		const nodes = await fn('*', ast);
+	it('should process `*`', async function () {
+		const nodes = await function_('*', ast);
 
 		assert.equal(nodes.length, 29);
 		assert.equal(nodes[0].type, 'comment');
 		assert.equal(nodes[nodes.length - 1].type, 'decl');
 	});
 
-	it('should process unknown node', async function() {
-		const nodes = await fn('jackie', ast);
+	it('should process unknown node', async function () {
+		const nodes = await function_('jackie', ast);
 
 		assert.equal(nodes.length, 0);
 	});
