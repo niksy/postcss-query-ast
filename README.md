@@ -111,8 +111,8 @@ MIT © [Ivan Nikolić](http://ivannikolic.com)
 
 <!-- prettier-ignore-start -->
 
-[ci]: https://travis-ci.com/niksy/postcss-query-ast
-[ci-img]: https://travis-ci.com/niksy/postcss-query-ast.svg?branch=master
+[ci]: https://github.com/niksy/postcss-query-ast/actions?query=workflow%3ACI
+[ci-img]: https://github.com/niksy/postcss-query-ast/workflows/CI/badge.svg?branch=master
 [mdn-type-selector]: https://developer.mozilla.org/en-US/docs/Web/CSS/Type_selectors
 [mdn-universal-selector]: https://developer.mozilla.org/en-US/docs/Web/CSS/Universal_selectors
 [mdn-attribute-selector]: https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors
