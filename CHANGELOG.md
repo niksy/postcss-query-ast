@@ -2,6 +2,8 @@
 
 ## [Unreleased][]
 
+## [2.1.0][] - 2021-10-25
+
 ### Added
 
 -   TypeScript types
@@ -30,3 +32,5 @@
 [1.0.0]: https://github.com/niksy/postcss-query-ast/tree/v1.0.0
 [unreleased]: https://github.com/niksy/postcss-query-ast/compare/v2.0.0...HEAD
 [2.0.0]: https://github.com/niksy/postcss-query-ast/tree/v2.0.0
+[unreleased]: https://github.com/niksy/postcss-query-ast/compare/v2.1.0...HEAD
+[2.1.0]: https://github.com/niksy/postcss-query-ast/tree/v2.1.0
