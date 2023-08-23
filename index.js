@@ -1,7 +1,7 @@
 /* eslint-disable import/no-namespace */
 
 import * as postcss from 'postcss';
-import * as selectorParser from 'postcss-selector-parser';
+import selectorParser from 'postcss-selector-parser';
 import getSelectorAst from './lib/selector-ast';
 import getCombinator from './lib/node/combinator';
 import getTag from './lib/node/tag';
