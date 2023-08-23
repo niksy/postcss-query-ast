@@ -1,6 +1,6 @@
 {
   "name": "postcss-query-ast",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Query PostCSS AST with CSS selectors.",
   "license": "MIT",
   "author": "Ivan Nikolić <niksy5@gmail.com> (http://ivannikolic.com)",

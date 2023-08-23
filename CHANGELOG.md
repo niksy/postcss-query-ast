@@ -2,6 +2,8 @@
 
 ## [Unreleased][]
 
+## [2.1.1][] - 2023-08-23
+
 ### Fixed
 
 -   Update default import for dependencies in ES module
@@ -35,3 +37,5 @@
 [1.0.0]: https://github.com/niksy/postcss-query-ast/tree/v1.0.0
 [2.0.0]: https://github.com/niksy/postcss-query-ast/tree/v2.0.0
 [2.1.0]: https://github.com/niksy/postcss-query-ast/tree/v2.1.0
+[Unreleased]: https://github.com/niksy/postcss-query-ast/compare/v2.1.1...HEAD
+[2.1.1]: https://github.com/niksy/postcss-query-ast/tree/v2.1.1
